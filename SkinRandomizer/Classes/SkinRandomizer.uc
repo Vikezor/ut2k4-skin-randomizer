@@ -53,22 +53,7 @@ function ApplySkin(xPawn P, xUtil.PlayerRecord Rec)
     if (P == None)
         return;
 
-    // Set mesh, skip for now, caused crashes when testing, vibecoding ho :D
-    //P.LinkMesh(Mesh(DynamicLoadObject(Rec.MeshName, class'Mesh')));
-
-    // Apply body + face skins
-    if (Rec.BodySkinName != "")
-        P.Skins[0] = Material(DynamicLoadObject(Rec.BodySkinName, class'Material'));
-
-    if (Rec.FaceSkinName != "")
-        P.Skins[1] = Material(DynamicLoadObject(Rec.FaceSkinName, class'Material'));
-
-    // Optional: update species (affects movement, sounds, etc.)
-    //if (Rec.Species != "")
-    //    P.Species = class<xPawnSpecies>(DynamicLoadObject(Rec.Species, class'Class'));
-
-    // Force update
-    // P.SetupPlayerRecord();
+	P.PlayerReplicationInfo.CharacterName = Rec.DefaultName;
 }
 
 defaultproperties
